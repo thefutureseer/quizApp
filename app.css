@@ -1,0 +1,94 @@
+:root {
+  background-color: antiquewhite;
+  /* 62.5% of font size (which is 16px in most browsers) = 10px */
+  font-size: 62.5%;
+}
+*{
+  /* border-box will add border to a box */
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+margin: 10;
+padding: 0;
+color: #333;
+}
+
+/* Using rem so it relative to the root font size */
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+}
+h1 {
+  font-size: 5.4rem;
+  color: red;
+  margin-bottom: 5rem;
+}
+h1 > span {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+h2 {
+  font-size: 4.2rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+/* UTILITIES */
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  /* display flex turns this container into a flex box container */
+  display: flex;
+  /* with flex box "centering" things is easy */
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: auto;
+}
+
+.container > * {
+ width: 100%;
+}
+
+.flex-column {
+ display: flex;
+ flex-direction: column
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+ text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* make the buttons look like buttons */
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 1rem solid rgb(184, 134, 7);
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: red;
+  background-color: rgb(255, 209, 25);
+  
+}

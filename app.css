@@ -3,7 +3,8 @@
   /* 62.5% of font size (which is 16px in most browsers) = 10px */
   font-size: 62.5%;
 }
-*{
+
+* {
   /* border-box will add border to a box */
 box-sizing:border-box;
 font-family: Arial, Helvetica, sans-serif;
@@ -19,20 +20,24 @@ h3,
 h4 {
   margin-bottom: 1rem;
 }
+
 h1 {
   font-size: 5.4rem;
   color: red;
   margin-bottom: 5rem;
 }
+
 h1 > span {
   font-size: 2.4rem;
   font-weight: 500;
 }
+
 h2 {
   font-size: 4.2rem;
   margin-bottom: 4rem;
   font-weight: 700;
 }
+
 h3 {
   font-size: 2.8rem;
   font-weight: 500;
@@ -49,7 +54,7 @@ h3 {
   justify-content: center;
   align-items: center;
   max-width: 80rem;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .container > * {
@@ -90,5 +95,17 @@ h3 {
   text-decoration: none;
   color: red;
   background-color: rgb(255, 209, 25);
-  
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 0.4rem 0 red;
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+ cursor: not-allowed;
+ box-shadow: none;
+ transform: none;
 }

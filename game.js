@@ -56,13 +56,18 @@ const startGame = () => {
   //Users score 
   score = 0;
   //Array for available questions and any we add on later by using the spread operator
-  availableQuestions = [...questions];
-  //Lastly in this function run the get new question function which is below
+  availableQuestions = [ ...questions];
+  //Last thing to do, run function named get new question which is below
   getNewQuestion();
 };
 
 //Get a random question and display it
 getNewQuestion =() => {
+  //Check if we are at the end of the available questions list
+  if (availableQuestions.length === 0 || qCounter > maxQs) {
+     //If no more questions go to the end game screen
+     return window.location.assign('/end.html');
+  }
   //Count how many questions we've asked
   qCounter ++;
   //Get random number by using the length of the questions array in order to select a question no matter 
@@ -83,6 +88,7 @@ getNewQuestion =() => {
   });
   //Subtract or splice out the question we ask
   availableQuestions.splice(questionIndex, 1);
+  console.log(availableQuestions);
   //After we loaded question then we are accepting answers true
   acceptA= true;
 };
@@ -93,11 +99,17 @@ choices.forEach( choice => {
   choice.addEventListener("click", event => {
     console.log(event.target);
     //If not accepting answers just return 
-    if (!acceptA) {
-      return;
+    if (!acceptA) return;
+      //Not accepting answers yet
       acceptA = false;
-    }
-  })
-})
+      //Refrence to event target
+      const selectedChoice = event.target;
+      //Reference to selected answer
+      const selectedAnswer = selectedChoice.dataset['number'];
+      console.log(selectedAnswer);
+      //After we answer a question then we run function to get a new question
+      getNewQuestion();
+  });
+});
 
 startGame()

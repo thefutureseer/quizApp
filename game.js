@@ -2,10 +2,9 @@
 const question = document.getElementById("question");
 //Refrence to choices
 const choices = Array.from(document.getElementsByClassName("choice-text"));
-// console.log(choices);
 
 //Current question
-let curentQ = {};
+let currentQ = {};
 //Users choice accepting answers false until we load the question
 let acceptA = false;
 //score counter
@@ -15,6 +14,7 @@ let qCounter = 0;
 //Empty array for available questions
 let availableQuestions = [];
 
+//Array of questions each with a number to select randomly
 let questions = [
   {
     "question": "Inside which HTML element do we put the JavaScript??",
@@ -73,8 +73,8 @@ getNewQuestion =() => {
   //Get random number by using the length of the questions array in order to select a question no matter 
   //Forward thinking
   const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-  //Use random number above to select index of the available questions array
-  const currentQ = availableQuestions[questionIndex];
+  //Use random number above to select index of the available questions array to show an unused question
+  currentQ = availableQuestions[questionIndex];
   //Using question's innerText element object to make the question appear on the UI
   question.innerText = currentQ.question;
 
@@ -88,7 +88,6 @@ getNewQuestion =() => {
   });
   //Subtract or splice out the question we ask
   availableQuestions.splice(questionIndex, 1);
-  console.log(availableQuestions);
   //After we loaded question then we are accepting answers true
   acceptA= true;
 };
@@ -96,18 +95,18 @@ getNewQuestion =() => {
 //Loop through choices
 choices.forEach( choice => {
   //when clicked do this
-  choice.addEventListener("click", event => {
-    console.log(event.target);
+  choice.addEventListener("click", e => {
+    // console.log(event.target);
     //If not accepting answers just return 
     if (!acceptA) return;
-      //Not accepting answers yet
+      //Not accepting answers yet so this is false
       acceptA = false;
-      //Refrence to event target
-      const selectedChoice = event.target;
-      //Reference to selected answer
+      //Refrence to event target and copy it to a variable
+      const selectedChoice = e.target;
+      //Reference to selected answer and copy it to a variable
       const selectedAnswer = selectedChoice.dataset['number'];
-      console.log(selectedAnswer);
-      //After we answer a question then we run function to get a new question
+      console.log(selectedAnswer == currentQ.answer);
+      //After we answer a question then we run function to get a new question 
       getNewQuestion();
   });
 });

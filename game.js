@@ -17,18 +17,26 @@ let availableQuestions = [];
 //Array of questions each with a number to select randomly
 let questions = [
   {
-    "question": "Inside which HTML element do we put the JavaScript??",
-    "choice1": "<script>",
-    "choice2": "<javascript>",
-    "choice3": "<js>",
-    "choice4": "<scripting>",
-    "answer": 1
+    "question": "When a disease is prevalent over, not a small area but the entire country or the whole world it is called a/an:",
+    "choice1": "Epidemic",
+    "choice2": "<bug>",
+    "choice3": "desease like Sars",
+    "choice4": "Pandemic",
+    "answer": 4
   },
   {
     "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
     "choice1": "<script href='xxx.js'>",
     "choice2": "<script name='xxx.js'>",
     "choice3": "<script src='xxx.js'>",
+    "choice4": "<script file='xxx.js'>",
+    "answer": 3
+  },
+  {
+    "question": "Do you use a face covering (9502+), to HELP you or to help save others from YOU?",
+    "choice1": "<script href='xxx.js'>",
+    "choice2": "Mostly saving myself",
+    "choice3": "You save others. Its (Official mask 9502+) keeping things to yourself such as the dropplets coming out of your mouth and nose. If theres much more skin showing your not saving yourself. See user instruction before use",
     "choice4": "<script file='xxx.js'>",
     "answer": 3
   },
@@ -105,7 +113,18 @@ choices.forEach( choice => {
       const selectedChoice = e.target;
       //Reference to selected answer and copy it to a variable
       const selectedAnswer = selectedChoice.dataset['number'];
-      console.log(selectedAnswer == currentQ.answer);
+      //Variable with turnary to call when question answered
+      const classToApply = selectedAnswer == currentQ.answer ? 'correct' : 'incorrect';
+      //Browser pops up the product of the user clicking their answer with game.css providing weather or not the user was right
+      selectedChoice.parentElement.classList.add(classToApply);
+      //After a moment remove the background color and get new question at the sametime
+      setTimeout(() => {
+      //Remove the class from the div
+      selectedChoice.parentElement.classList.remove(classToApply);
+      getNewQuestion();
+      }, 450);
+
+      console.log(classToApply);
       //After we answer a question then we run function to get a new question 
       getNewQuestion();
   });

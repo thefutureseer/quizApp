@@ -25,3 +25,11 @@
   color: blue;
   width: 100%;
 }
+
+.correct {
+  background-color: yellowgreen;
+}
+
+.incorrect {
+  background-color: tomato;
+}
